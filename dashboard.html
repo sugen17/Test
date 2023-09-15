@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Dashboard - Manchester United Football Club</title>
+    <link rel="icon" href="Manchester_United_FC_crest.svg.ico" type="image/x-icon">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style>
+          body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('images (1).jpg'); /* Replace 'your_image.jpg' with the path to your desired image */
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #8B0000; /* Dark red text color */
+        }
+
+        .dashboard-links {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .dashboard-links a {
+            padding: 10px 20px;
+            margin: 0 10px;
+            background-color: #333;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 3px; /* Rounded button corners */
+        }
+
+        .dashboard-links a:hover {
+            background-color: #555; /* Button background color on hover */
+        }
+
+        .section {
+            margin-top: 30px;
+        }
+
+        .section h2 {
+            margin-bottom: 10px;
+            color: #8B0000; /* Dark red text color */
+        }
+
+        .section p {
+            color: #333; /* Text color */
+        }
+
+        .section ul {
+            padding-left: 20px;
+            color: #333; /* Text color */
+        }
+
+        .goals {
+            background-color: #F2F2F2;
+            padding: 20px;
+            border-radius: 5px;
+        }
+
+        .goals h2 {
+            margin-bottom: 10px;
+            color: #8B0000; /* Dark red text color */
+            text-align: center;
+        }
+
+        .goals p {
+            color: #333; /* Text color */
+            text-align: center;
+            font-style: italic;
+        }
+
+        .chart-container {
+            margin-top: 30px;
+            position: relative;
+        }
+
+        .chart-container h3 {
+            margin-bottom: 10px;
+            color: #8B0000; /* Dark red text color */
+            text-align: center;
+        }
+
+        canvas {
+            margin-top: 10px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome, Administrator!</h1>
+        <div class="dashboard-links">
+            <a href="staff.html">Manage Staff</a>
+            <a href="members.html">Manage Members</a>
+            <a href="products.html">Manage Orders</a>
+        </div>
+        <div class="section">
+            <h2>Goals and Objectives</h2>
+            <div class="goals">
+                <h2>Website Goals</h2>
+                <p>To provide fans with a comprehensive and engaging online experience that allows them to stay connected with the club, support their team, and connect with other fans.</p>
+                <h2>Progress Report</h2>
+                <p>The website has successfully achieved high user engagement with an average session duration of 5 minutes and a low bounce rate of 20%.</p>
+            </div>
+        </div>
+        <div class="section">
+            <h2>User Management</h2>
+            <p>Name: Sugen</p>
+            <p>Permission: Anything</p>
+        </div>
+        
+        <div class="section">
+            <h2>Analytics</h2>
+            <div class="analytics">
+                <div class="chart-container">
+                    <h3>Website Traffic</h3>
+                    <canvas id="websiteTrafficChart"></canvas>
+                </div>
+                <div class="chart-container">
+                    <h3>Social Media Engagement</h3>
+                    <canvas id="socialMediaEngagementChart"></canvas>
+                </div>
+                <div class="chart-container">
+                    <h3>Ticket Sales</h3>
+                    <canvas id="ticketSalesChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Website Traffic Chart
+        var websiteTrafficCtx = document.getElementById('websiteTrafficChart').getContext('2d');
+        var websiteTrafficChart = new Chart(websiteTrafficCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Daily Visitors', 'Weekly Visitors', 'Monthly Visitors'],
+                datasets: [{
+                    label: 'Website Traffic',
+                    data: [15500, 108200, 450000],
+                    backgroundColor: '#8B0000',
+                    borderColor: '#8B0000',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        // Social Media Engagement Chart
+        var socialMediaEngagementCtx = document.getElementById('socialMediaEngagementChart').getContext('2d');
+        var socialMediaEngagementChart = new Chart(socialMediaEngagementCtx, {
+            type: 'line',
+            data: {
+                labels: ['Facebook', 'Twitter', 'Instagram', 'YouTube'],
+                datasets: [{
+                    label: 'Followers',
+                    data: [780000, 450000, 920000, 260000],
+                    backgroundColor: 'rgba(0, 128, 0, 0.2)', // Green background color
+                    borderColor: 'rgba(0, 128, 0, 1)', // Green border color
+                    borderWidth: 1
+                }, {
+                    label: 'Likes',
+                    data: [230000, 110000, 300000, 35000],
+                    backgroundColor: 'rgba(139, 0, 0, 0.4)',
+                    borderColor: '#8B0000',
+                    borderWidth: 1
+                }, {
+                    label: 'Engagement Rate',
+                    data: [90000, 50000, 150000, 5000],
+                    backgroundColor: 'rgba(255, 105, 180, 0.6)', // Pink background color
+                    borderColor: 'rgba(255, 105, 180, 1)', // Pink border color
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        // Ticket Sales Chart
+        var ticketSalesCtx = document.getElementById('ticketSalesChart').getContext('2d');
+        var ticketSalesChart = new Chart(ticketSalesCtx, {
+            type: 'pie',
+            data: {
+                labels: ['Sold Tickets', 'Available Tickets'],
+                datasets: [{
+                    data: [52000, 48000],
+                    backgroundColor: ['#8B0000', '#F2F2F2'],
+                    borderColor: '#fff',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true
+            }
+        });
+    </script>
+</body>
+</html>
